@@ -26,6 +26,7 @@
     --cds-chart-grid: #ececea; --cds-chart-muted: #b9b9b3; --cds-chart-reference: #8f8f89;
     --cds-border: #e3e3de; --cds-text-secondary: #6b6b66; --cds-surface-popover: #ffffff; --cds-shadow-popover: 0 4px 16px rgba(0,0,0,.12);
     --accent: #1f3b73;
+    --wf-sticky-offset: 41px;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -107,7 +108,8 @@
   function boot(p) {
     const loaders = {}, calcs = {}, cbs = [], data = {};
     window.dash = {
-      colors: ['#3b6fd8', '#d9822b', '#3aa676', '#9b59b6', '#c0504d', '#4bacc6'],
+      // 数据可视化参考色板的前四个分类色（已通过色盲区分度校验），深色模式用同色相的深色档。
+      colors: matchMedia('(prefers-color-scheme: dark)').matches ? ['#3987e5', '#d95926', '#199e70', '#c98500'] : ['#2a78d6', '#eb6834', '#1baf7a', '#eda100'],
       loader(id, o) { loaders[id] = o; },
       calc(id, o) { calcs[id] = o; },
       onData(cb) { cbs.push(cb); },
