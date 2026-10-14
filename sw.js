@@ -1,5 +1,5 @@
 // 外壳和库先读缓存；数据文件 app.enc 和 salt.txt 先走网络（拿到每周新数据），离线时退回缓存。
-const CACHE = 'usd-390370b2c5';
+const CACHE = 'usd-04a7d9c57c';
 const SHELL = ['./', 'index.html', 'd3.min.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'favicon.png', 'salt.txt', 'app.enc'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => {
