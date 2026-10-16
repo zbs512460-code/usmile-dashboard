@@ -120,7 +120,8 @@
     app.innerHTML = p.page;
     for (const old of app.querySelectorAll('script')) {
       const s = document.createElement('script');
-      s.textContent = old.textContent;
+      // 和看板一致：每个 <script> 各自一个作用域，同名工具函数互不冲突
+      s.textContent = '(() => {\n' + old.textContent + '\n})();';
       old.replaceWith(s);
     }
     for (const [id, answer] of Object.entries(p.answers)) {
