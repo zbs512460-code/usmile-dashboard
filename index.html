@@ -114,6 +114,8 @@
       calc(id, o) { calcs[id] = o; },
       onData(cb) { cbs.push(cb); },
       data(id) { return data[id] ?? { status: 'missing' }; },
+      // 每个实时数据源的抓取时间：页面用它标"什么时候查的"（看板里实时查询，没有这一项就是今天）
+      captured: p.captured || {},
       setLink(id) { try { history.replaceState(null, '', '#' + id); } catch {} },
     };
     const app = document.getElementById('app');
